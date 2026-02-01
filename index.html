@@ -1,94 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>💖 Valentine?</title>
+<meta charset="UTF-8">
+<title>💖 Valentine 💖</title>
 
-  <style>
-    body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      width: 320px;
-    }
-
-    img {
-      width: 220px;
-      border-radius: 15px;
-      margin-bottom: 15px;
-    }
-
-    h1 {
-      color: #ff4d6d;
-      margin-bottom: 15px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      margin: 8px;
-    }
-
-    .yes {
-      background: #ff4d6d;
-      color: white;
-    }
-
-    .no {
-      background: #ccc;
-      position: absolute;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="card">
-    <img src="photo.jpg">
-
-    <h1>💘 Will you be my Valentine? 💘</h1>
-
-    <!-- SOUNDLOUD PLAYER (VISIBLE – THIS IS IMPORTANT) -->
-    <iframe
-      width="100%"
-      height="120"
-      scrolling="no"
-      frameborder="no"
-      allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syed-abaas/pehli-nazar-mein-race">
-    </iframe>
-
-    <button class="yes" onclick="yesClick()">Yes 😍</button>
-    <button class="no" onmouseover="moveButton()">No 😢</button>
-  </div>
-
-  <script>
-    function yesClick() {
-      document.querySelector(".card").innerHTML =
-        "<h1 style='color:#ff4d6d;'>YAYYY!! 💖🥰<br>I love you 💕</h1>";
-    }
-
-    function moveButton() {
-      const btn = document.querySelector(".no");
-      btn.style.left = Math.random() * 80 + "vw";
-      btn.style.top = Math.random() * 80 + "vh";
-    }
-  </script>
-
-</body>
-</html>
+/* Card */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgb
