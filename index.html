@@ -1,24 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>💖 Valentine 💖</title>
+  <meta charset="UTF-8">
+  <title>💖 Valentine?</title>
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+    }
 
-/* Card */
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgb
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    img {
+      width: 220px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background: #ccc;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    iframe {
+      display: none;
+    }
+
+    .tap {
+      position: fixed;
+      bottom: 20px;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body onclick="startMusic()">
+
+  <!-- SOUNDLOUD EMBED (LEGAL & WORKING) -->
+  <iframe
+    id="sc"
+    allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-933468704/pehli-nazar-me&auto_play=true">
+  </iframe>
+
+  <div class="card">
+    <img src="photo.jpg">
+    <h1>💘 Will you be my Valentine? 💘</h1>
+    <button class="yes" onclick="yesClick()">Yes 😍</button>
+    <button class="no" onmouseover="moveButton()">No 😢</button>
+  </div>
+
+  <div class="tap">Tap anywhere for music 🎶</div>
+
+  <script>
+    let started = false;
+
+    function startMusic() {
+      if (!started) {
+        document.getElementById("sc").style.display = "block";
+        document.querySelector(".tap").remove();
+        started = true;
+      }
+    }
+
+    function yesClick() {
+      document.querySelector(".card").innerHTML =
+        "<h1 style='color:#ff4d6d;'>YAYYY!! 💖🥰<br>I love you 💕</h1>";
+    }
+
+    function moveButton() {
+      const btn = document.querySelector(".no");
+      btn.style.left = Math.random() * 80 + "vw";
+      btn.style.top = Math.random() * 80 + "vh";
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
