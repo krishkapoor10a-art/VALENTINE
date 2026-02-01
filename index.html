@@ -55,6 +55,17 @@
       position: absolute;
     }
 
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
     iframe {
       display: none;
     }
@@ -62,19 +73,19 @@
     .tap {
       position: fixed;
       bottom: 20px;
-      font-size: 14px;
       color: white;
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body onclick="startMusic()">
 
-  <!-- MANUAL SOUNDCLOUD EMBED (WORKS EVEN WITHOUT EMBED BUTTON) -->
+  <!-- SOUNDLOUD EMBED (LEGAL & WORKING) -->
   <iframe
-    id="music"
+    id="sc"
     allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syed-abaas/pehli-nazar-mein-race&auto_play=true">
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-933468704/pehli-nazar-me&auto_play=true">
   </iframe>
 
   <div class="card">
@@ -91,7 +102,7 @@
 
     function startMusic() {
       if (!started) {
-        document.getElementById("music").style.display = "block";
+        document.getElementById("sc").style.display = "block";
         document.querySelector(".tap").remove();
         started = true;
       }
@@ -107,6 +118,17 @@
       btn.style.left = Math.random() * 80 + "vw";
       btn.style.top = Math.random() * 80 + "vh";
     }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 300);
   </script>
 
 </body>
