@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>💖 Valentine?</title>
+  <meta charset="UTF-8" />
+  <title>💖 Valentine 💖</title>
 
   <style>
     body {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
-      height: 100vh;
       margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
       overflow: hidden;
-      text-align: center;
     }
 
     .card {
@@ -22,6 +21,7 @@
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      text-align: center;
       z-index: 2;
     }
 
@@ -38,9 +38,9 @@
 
     button {
       padding: 12px 25px;
-      font-size: 18px;
+      font-size: 16px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
       cursor: pointer;
       margin: 10px;
     }
@@ -55,59 +55,49 @@
       position: absolute;
     }
 
-    iframe {
-      display: none;
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      font-size: 24px;
+      animation: float 6s linear infinite;
     }
 
-    .tap {
-      position: fixed;
-      bottom: 20px;
-      font-size: 14px;
-      color: white;
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
     }
   </style>
 </head>
 
-<body onclick="startMusic()">
-
-  <!-- MANUAL SOUNDCLOUD EMBED (WORKS EVEN WITHOUT EMBED BUTTON) -->
-  <iframe
-    id="music"
-    allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syed-abaas/pehli-nazar-mein-race&auto_play=true">
-  </iframe>
+<body>
 
   <div class="card">
-    <img src="photo.jpg">
-    <h1>💘 Will you be my Valentine? 💘</h1>
+    <img src="photo.jpg" alt="Love" />
+    <h1>💖 Will you be my Valentine? 💖</h1>
+
     <button class="yes" onclick="yesClick()">Yes 😍</button>
-    <button class="no" onmouseover="moveButton()">No 😢</button>
+    <button class="no" onmouseover="moveButton()">No 🙈</button>
+
+    <!-- SoundCloud player -->
+    <div style="margin-top:20px;">
+      <iframe
+        width="100%"
+        height="120"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syed-abaas/pehli-nazar-mein-race&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false">
+      </iframe>
+    </div>
   </div>
 
-  <div class="tap">Tap anywhere for music 🎶</div>
-
   <script>
-    let started = false;
-
-    function startMusic() {
-      if (!started) {
-        document.getElementById("music").style.display = "block";
-        document.querySelector(".tap").remove();
-        started = true;
-      }
-    }
-
     function yesClick() {
-      document.querySelector(".card").innerHTML =
-        "<h1 style='color:#ff4d6d;'>YAYYY!! 💖🥰<br>I love you 💕</h1>";
+      document.body.innerHTML =
+        "<h1 style='color:white;font-size:32px;'>YAYYY!! 💖🥰 I love you 💖</h1>";
     }
 
     function moveButton() {
       const btn = document.querySelector(".no");
       btn.style.left = Math.random() * 80 + "vw";
-      btn.style.top = Math.random() * 80 + "vh";
-    }
-  </script>
-
-</body>
-</html>
+      btn.style.top = Math.random() * 80 + "vh"*
