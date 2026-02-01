@@ -58,6 +58,7 @@
     .heart {
       position: absolute;
       font-size: 24px;
+      color: rgba(255,255,255,0.9);
       animation: float 6s linear infinite;
     }
 
@@ -69,48 +70,39 @@
     iframe {
       display: none;
     }
-
-    .tap {
-      position: fixed;
-      bottom: 20px;
-      color: white;
-      font-size: 14px;
-    }
   </style>
 </head>
 
-<body onclick="startMusic()">
+<body onclick="playMusic()">
 
-  <!-- SOUNDLOUD EMBED (LEGAL & WORKING) -->
+  <!-- HOSTED MUSIC (ALWAYS WORKS) -->
   <iframe
-    id="sc"
-    allow="autoplay"
-    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-933468704/pehli-nazar-me&auto_play=true">
+    id="music"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/edsheeran/perfect&auto_play=true"
+    allow="autoplay">
   </iframe>
 
   <div class="card">
-    <img src="photo.jpg">
+    <img src="photo.jpg" alt="Us 💕">
     <h1>💘 Will you be my Valentine? 💘</h1>
+
     <button class="yes" onclick="yesClick()">Yes 😍</button>
     <button class="no" onmouseover="moveButton()">No 😢</button>
   </div>
 
-  <div class="tap">Tap anywhere for music 🎶</div>
-
   <script>
     let started = false;
 
-    function startMusic() {
+    function playMusic() {
       if (!started) {
-        document.getElementById("sc").style.display = "block";
-        document.querySelector(".tap").remove();
+        document.getElementById("music").style.display = "block";
         started = true;
       }
     }
 
     function yesClick() {
       document.querySelector(".card").innerHTML =
-        "<h1 style='color:#ff4d6d;'>YAYYY!! 💖🥰<br>I love you 💕</h1>";
+        "<h1 style='color:#ff4d6d;font-size:32px;'>YAYYY!! 💖🥰<br>I love you 💕</h1>";
     }
 
     function moveButton() {
@@ -124,6 +116,7 @@
       heart.className = "heart";
       heart.innerHTML = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 6000);
     }
