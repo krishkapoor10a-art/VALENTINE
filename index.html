@@ -13,15 +13,16 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
       text-align: center;
     }
 
     .card {
       background: white;
-      padding: 25px;
+      padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      width: 320px;
+      z-index: 2;
     }
 
     img {
@@ -32,16 +33,16 @@
 
     h1 {
       color: #ff4d6d;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 12px 25px;
+      font-size: 18px;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
       cursor: pointer;
-      margin: 8px;
+      margin: 10px;
     }
 
     .yes {
@@ -53,31 +54,49 @@
       background: #ccc;
       position: absolute;
     }
+
+    iframe {
+      display: none;
+    }
+
+    .tap {
+      position: fixed;
+      bottom: 20px;
+      font-size: 14px;
+      color: white;
+    }
   </style>
 </head>
 
-<body>
+<body onclick="startMusic()">
+
+  <!-- MANUAL SOUNDCLOUD EMBED (WORKS EVEN WITHOUT EMBED BUTTON) -->
+  <iframe
+    id="music"
+    allow="autoplay"
+    src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syed-abaas/pehli-nazar-mein-race&auto_play=true">
+  </iframe>
 
   <div class="card">
     <img src="photo.jpg">
-
     <h1>💘 Will you be my Valentine? 💘</h1>
-
-    <!-- SOUNDLOUD PLAYER (VISIBLE – THIS IS IMPORTANT) -->
-    <iframe
-      width="100%"
-      height="120"
-      scrolling="no"
-      frameborder="no"
-      allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syed-abaas/pehli-nazar-mein-race">
-    </iframe>
-
     <button class="yes" onclick="yesClick()">Yes 😍</button>
     <button class="no" onmouseover="moveButton()">No 😢</button>
   </div>
 
+  <div class="tap">Tap anywhere for music 🎶</div>
+
   <script>
+    let started = false;
+
+    function startMusic() {
+      if (!started) {
+        document.getElementById("music").style.display = "block";
+        document.querySelector(".tap").remove();
+        started = true;
+      }
+    }
+
     function yesClick() {
       document.querySelector(".card").innerHTML =
         "<h1 style='color:#ff4d6d;'>YAYYY!! 💖🥰<br>I love you 💕</h1>";
