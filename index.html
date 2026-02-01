@@ -40,27 +40,53 @@
       background: #ccc;
       position: absolute;
     }
+    .heart {
+  position: absolute;
+  color: rgba(255,255,255,0.8);
+  font-size: 24px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
   </style>
 </head>
+  <audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <body>
 
   <div class="card">
+    <img src="photo.jpg" style="width:220px;border-radius:15px;margin-bottom:15px;">
     <h1>💘 Will you be my Valentine? 💘</h1>
     <button class="yes" onclick="yesClick()">Yes 😍</button>
     <button class="no" onmouseover="moveButton()">No 😢</button>
   </div>
 
-  <script>
-    function yesClick() {
-      document.body.innerHTML = "<h1 style='color:white;'>YAYYY!! 💖🥰 I love you 💕</h1>";
-    }
+ <script>
+  function yesClick() {
+    document.body.innerHTML =
+      "<h1 style='color:white;'>YAYYY!! 💖🥰 I love you 💕</h1>";
+  }
 
-    function moveButton() {
-      const btn = document.querySelector('.no');
-      btn.style.left = Math.random() * 80 + "vw";
-      btn.style.top = Math.random() * 80 + "vh";
-    }
-  </script>
+  function moveButton() {
+    const btn = document.querySelector('.no');
+    btn.style.left = Math.random() * 80 + "vw";
+    btn.style.top = Math.random() * 80 + "vh";
+  }
 
-</body>
-</html>
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
